@@ -1,0 +1,15 @@
+\definecolor{jackred}{HTML}{851019}
+\mode<presentation>
+{
+  \usetheme{CambridgeUS} % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamercolor{frametitle}{fg=jackred}
+  \setbeamercolor{block title}{bg=gray!20,fg=jackred}
+}
+
+\newif\ifplacelogo % create a new conditional
+\placelogotrue % set it to true
+\logo{\ifplacelogo\includegraphics[width=.75cm]{Images/WashU-logo2.png}\fi}

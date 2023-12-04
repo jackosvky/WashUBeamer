@@ -1,0 +1,87 @@
+\tikzset{
+block/.style={
+  draw, 
+  rectangle, 
+  minimum height=3em, 
+  minimum width=6em
+  },
+sum/.style={
+  draw, 
+  circle, 
+  },
+input/.style={coordinate},
+output/.style={coordinate},
+pinstyle/.style={
+  pin edge={to-,thin,black}
+  }
+} 
+
+% ******************************************************************************
+% This part of code 
+% Bibliography settings - Begin (Nico)
+% ******************************************************************************
+\usepackage[bibstyle=authoryear, citestyle=authoryear-comp, backend=bibtex, url=false]{biblatex}
+\usepackage[babel]{csquotes}
+
+% Dimension of bibliography text
+\renewcommand*{\bibfont}{\footnotesize}
+
+% Link to bibliography souce file (*.bib)
+\addbibresource{bibliography.bib}
+
+% To show in bibliography also references not cited in the body 
+\nocite{*}
+
+% Makes volume of journal bold and adds colon
+\DeclareFieldFormat[article]{volume}{\textbf{#1}\space}
+
+% Maximum number of cited authors (if greater put first one + "et al.")
+\ExecuteBibliographyOptions{maxcitenames=2}
+
+% Comandi per rendere cliccabili anche i nomi degli autori e non solo l'anno 
+\DeclareFieldFormat{citehyperref}{%
+	\DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+	\bibhyperref{#1}}
+
+\DeclareFieldFormat{textcitehyperref}{%
+	\DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+	\bibhyperref{%
+		#1%
+		\ifbool{cbx:parens}
+		{\bibcloseparen\global\boolfalse{cbx:parens}}
+		{}}}
+
+\savebibmacro{cite}
+\savebibmacro{textcite}
+
+\renewbibmacro*{cite}{%
+	\printtext[citehyperref]{%
+		\restorebibmacro{cite}%
+		\usebibmacro{cite}}}
+
+\renewbibmacro*{textcite}{%
+	\ifboolexpr{
+		( not test {\iffieldundef{prenote}} and
+		test {\ifnumequal{\value{citecount}}{1}} )
+		or
+		( not test {\iffieldundef{postnote}} and
+		test {\ifnumequal{\value{citecount}}{\value{citetotal}}} )
+	}
+	{\DeclareFieldAlias{textcitehyperref}{noformat}}
+	{}%
+	\printtext[textcitehyperref]{%
+		\restorebibmacro{textcite}%
+		\usebibmacro{textcite}}}
+
+% Remove some fields from bibliography entries
+\AtEveryBibitem{%
+	\clearfield{pages} %page remobìving
+	
+	\ifentrytype{article}{ %check if article
+		\clearfield{issn} %issn removing
+	}{%
+	}%
+}
+% *******************************************************************************
+% Bibliography settings - End (Nico)
+% *******************************************************************************

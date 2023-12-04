@@ -1,0 +1,108 @@
+\documentclass[11pt,aspectratio=1610]{beamer} %handout
+\usefonttheme[onlymath]{serif}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{appendixnumberbeamer}
+\usepackage{pgfpages}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes,arrows,positioning}
+\usetikzlibrary{calc,matrix,arrows.meta,decorations.pathreplacing}
+
+% Declaration of operators
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\T}{\top}
+\DeclareMathOperator{\cg}{\text{corr}(\hat{g})}
+
+% Printing out the outline for each section (when not in handout mode)
+\AtBeginSection[] {
+    \begin{frame}<beamer>{Outline}
+    \footnotesize
+    \tableofcontents[
+        currentsection, 
+        hideothersubsections, sectionstyle=show/shaded   ]
+    \end{frame}
+}
+
+\input{Style/Style_file}
+\input{Style/Jack_bib} 
+
+
+% Adding notes to each slide. 
+% add \note{What you want to see in the note at the interested slide}
+% Un-comment the option you want
+\setbeameroption{hide notes}                            % Only slides
+%\setbeameroption{show only notes}                      % Only notes
+%\setbeameroption{show notes on second screen=right}    % Both
+\setbeamertemplate{note page}{%
+	\pagecolor{yellow!5}
+	\vfill
+	\begin{minipage}[c][\textheight][t]{\textwidth}
+		{\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle\par}
+		\insertnote
+	\end{minipage}
+}
+
+% \alert<3>{ }
+% \only<1-2>
+
+\title[s1]{Title}
+\author[a1]{author}
+\institute[]{Washington University in St. Louis}
+\date{date}
+\begin{document}
+\placelogofalse
+\begin{frame}
+  \titlepage
+  \begin{center}
+  \includegraphics[width=0.15\textwidth]{Images/washU (1).png}
+  \end{center}
+  \end{frame}
+\placelogotrue
+\begin{frame}{Table of Contents}	
+	    \footnotesize
+    \tableofcontents[hideallsubsections]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Section}
+%\subsection{Objective of the paper }
+\begin{frame}{Slide}
+    \begin{itemize}
+        \item<1-> 1
+        \item<2-> 2
+    \end{itemize}
+    
+\end{frame}
+\end{document}
+
+
+ 
